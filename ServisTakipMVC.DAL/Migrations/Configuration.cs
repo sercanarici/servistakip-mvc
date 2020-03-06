@@ -52,8 +52,9 @@ namespace ServisTakipMVC.DAL.Migrations
 
             context.Bayi.AddOrUpdate(new Bayi { Id = 1, Adi = "Odak Bilgisayar", KayitTarihi = DateTime.Now, Silindi = false });
 
-            context.Musteri.Add(new Musteri
+            context.Musteri.AddOrUpdate(new Musteri
             {
+                Id=1,
                 FirmaAdi = "Alisa Baby",
                 Adres = "Laleli",
                 BayiId = 1,
