@@ -1,0 +1,11 @@
+Z:\Rsa\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\obj\Debug\ServisTakipMVC.MODEL.csprojAssemblyReference.cache
+Z:\Rsa\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\obj\Debug\ServisTakipMVC.MODEL.csproj.CoreCompileInputs.cache
+Z:\Rsa\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\bin\Debug\ServisTakipMVC.MODEL.dll
+Z:\Rsa\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\bin\Debug\ServisTakipMVC.MODEL.pdb
+Z:\Rsa\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\obj\Debug\ServisTakipMVC.MODEL.dll
+Z:\Rsa\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\obj\Debug\ServisTakipMVC.MODEL.pdb
+D:\OneDrive\Repositories\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\bin\Debug\ServisTakipMVC.MODEL.dll
+D:\OneDrive\Repositories\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\bin\Debug\ServisTakipMVC.MODEL.pdb
+D:\OneDrive\Repositories\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\obj\Debug\ServisTakipMVC.MODEL.csprojAssemblyReference.cache
+D:\OneDrive\Repositories\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\obj\Debug\ServisTakipMVC.MODEL.dll
+D:\OneDrive\Repositories\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\obj\Debug\ServisTakipMVC.MODEL.pdb
