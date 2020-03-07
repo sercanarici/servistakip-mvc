@@ -1,4 +1,5 @@
 ﻿using ServisTakipMVC.BLL;
+using ServisTakipMVC.MODEL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
         {
             using (MusteriRepository repo = new MusteriRepository())
             {
-                var model = repo.Listele();
+                var model = repo.Listele(x => !x.Silindi);
                 return View(model);
             }
         }
@@ -22,44 +23,82 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
         // GET: Admin/Musteri/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            using (var repo = new MusteriRepository())
+            {
+                var model = repo.Getir(x => x.Id == id);
+                return View(model);
+
+            }
         }
 
         // GET: Admin/Musteri/Create
         public ActionResult Create()
         {
+            using (BayiRepository bayiRepo = new BayiRepository())
+            {
+                var bayiler = bayiRepo.Listele(x => !x.Silindi);
+                ViewBag.Bayiler = new SelectList(bayiler, "Id", "Adi"); ;
+            }
             return View();
         }
 
         // POST: Admin/Musteri/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Musteri model)
         {
             try
             {
-                // TODO: Add insert logic here
+
+                using (MusteriRepository repo = new MusteriRepository())
+                {
+                    model.KayitTarihi = DateTime.Now;
+                    repo.Ekle(model);
+                }
+
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Create));
+                //return View();
             }
         }
 
         // GET: Admin/Musteri/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            using (BayiRepository bayiRepo = new BayiRepository())
+            {
+                var bayiler = bayiRepo.Listele(x => !x.Silindi);
+                ViewBag.Bayiler = new SelectList(bayiler, "Id", "Adi"); ;
+            }
+
+            using (var repo = new MusteriRepository())
+            {
+                var model = repo.Getir(x => x.Id == id);
+                return View(model);
+            }
         }
 
         // POST: Admin/Musteri/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, Musteri model)
         {
             try
             {
-                // TODO: Add update logic here
+                using (BayiRepository bayiRepo = new BayiRepository())
+                {
+                    var bayiler = bayiRepo.Listele(x => !x.Silindi);
+                    ViewBag.Bayiler = new SelectList(bayiler, "Id", "Adi"); ;
+                }
+
+                using (var repo = new MusteriRepository())
+                {
+                    repo.Guncelle(model);
+                }               
 
                 return RedirectToAction("Index");
             }
