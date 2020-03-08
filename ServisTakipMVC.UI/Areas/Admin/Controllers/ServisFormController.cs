@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ServisTakipMVC.BLL;
+using ServisTakipMVC.MODEL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,11 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
         // GET: Admin/ServisForm
         public ActionResult Index()
         {
-            return View();
+            using (var repo = new ServisFormRepository())
+            {
+                var model = repo.Listele(x=>!x.Silindi);
+                return View(model);
+            }
         }
 
         // GET: Admin/ServisForm/Details/5
@@ -23,22 +29,62 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
         // GET: Admin/ServisForm/Create
         public ActionResult Create()
         {
+            using (MusteriRepository repo = new MusteriRepository())
+            {
+                var liste = repo.Listele(x => !x.Silindi);
+                ViewBag.Musteriler = new SelectList(liste, "Id", "FirmaAdi"); ;
+            }
+
+            using (ServisTipRepository repo = new ServisTipRepository())
+            {
+                var liste = repo.Listele(x => !x.Silindi);
+                ViewBag.ServisTipleri = new SelectList(liste, "Id", "Adi"); ;
+            }
+
+            using (ServisIcerikRepository repo = new ServisIcerikRepository())
+            {
+                var liste = repo.Listele(x => !x.Silindi);
+                ViewBag.ServisIcerikleri = new SelectList(liste, "Id", "Adi"); ;
+            }
+
+            using (ServisSekliRepository repo = new ServisSekliRepository())
+            {
+                var liste = repo.Listele(x => !x.Silindi);
+                ViewBag.ServisSekilleri = new SelectList(liste, "Id", "Adi"); ;
+            }
+
+            using (BakimAnlasmaRepository repo = new BakimAnlasmaRepository())
+            {
+                var liste = repo.Listele(x => !x.Silindi);
+                ViewBag.BakimAnlasmalari = new SelectList(liste, "Id", "Musterisi.FirmaAdi"); ;
+            }
+
             return View();
+
         }
 
         // POST: Admin/ServisForm/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(ServisForm model)
         {
             try
             {
-                // TODO: Add insert logic here
+
+                using (ServisFormRepository repo = new ServisFormRepository())
+                {
+                    model.KayitTarihi = DateTime.Now;
+                    model.KullaniciId = 2;                    
+                    repo.Ekle(model);
+                }
+
 
                 return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction(nameof(Create));
+                //return View();
             }
         }
 

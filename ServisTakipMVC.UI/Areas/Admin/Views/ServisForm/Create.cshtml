@@ -1,0 +1,165 @@
+﻿@model ServisTakipMVC.MODEL.ServisForm
+
+@{
+    ViewBag.Title = "Yeni Servis Formu";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title">Servis Bilgileri</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            <form role="form" method="post">
+                @Html.AntiForgeryToken()
+                <div class="box-body">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="form-group">
+                        <label>Müşteri</label>
+                        <select class="form-control" name="MusteriId">
+                            <option value="0">--Seçiniz--</option>
+                            @foreach (var item in ViewBag.Musteriler)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+
+                        </select>
+                        @Html.ValidationMessageFor(model => model.MusteriId, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="belgeno">Belge No</label>
+                        <input type="text" class="form-control" id="belgeno" name="BelgeNo" placeholder="BelgeNo giriniz">
+                        @Html.ValidationMessageFor(model => model.BelgeNo, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Servis Tipi</label>
+                        <select class="form-control" name="ServisTipId">
+                            <option value="0">--Seçiniz--</option>
+                            @foreach (var item in ViewBag.ServisTipleri)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(model => model.ServisTipId, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Servis İçeriği</label>
+                        <select class="form-control" name="ServisIcerikId">
+                            <option value="0">--Seçiniz--</option>
+                            @foreach (var item in ViewBag.ServisIcerikleri)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(model => model.ServisIcerikId, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Servis Şekli</label>
+                        <select class="form-control" name="ServisSekliId">
+                            <option value="0">--Seçiniz--</option>
+                            @foreach (var item in ViewBag.ServisSekilleri)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(model => model.ServisSekliId, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Başlangıç Tarihi</label>
+                        <div class="input-group date">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="BaslangicTarihi" name="BaslangicTarihi">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bitiş Tarihi</label>
+                        <div class="input-group date">
+                            <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="BitisTarihi" name="BitisTarihi">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+
+                    <div class="form-group">
+                        <label>Yapılan İşlemler</label>
+                        <textarea class="form-control" rows="3" name="YapilanIslemler" placeholder=""></textarea>
+                        @Html.ValidationMessageFor(model => model.YapilanIslemler, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Not</label>
+                        <textarea class="form-control" rows="3" name="Notlar" placeholder=""></textarea>
+                        @Html.ValidationMessageFor(model => model.Notlar, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label for="belgeno">Müşteri Ad-Soyad</label>
+                        <input type="text" class="form-control" id="MusteriAdi" name="MusteriAdi" placeholder="MusteriAdi giriniz">
+                        @Html.ValidationMessageFor(model => model.MusteriAdi, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Bakım Anlaşması</label>
+                        <select class="form-control" name="BakimAnlasmaId">
+                            <option value="0">--Seçiniz--</option>
+                            @foreach (var item in ViewBag.BakimAnlasmalari)
+                            {
+                                <option value="@item.Value">@item.Text</option>
+                            }
+                        </select>
+                        @Html.ValidationMessageFor(model => model.BakimAnlasmaId, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Servis Ücreti</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="ServisUcreti">
+                            <span class="input-group-addon">.00</span>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.ServisUcreti, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Para Birimi</label>
+                        <select class="form-control" name="ParaBirimi">
+                            <option value="">--Seçiniz--</option>
+                            <option value="TL">Türk Lirası</option>
+                            <option value="$">Amerikan Doları</option>
+                        </select>
+                        @Html.ValidationMessageFor(model => model.ParaBirimi, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="Odendi"> Ödendi
+                        </label>
+                    </div>
+
+                </div><!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Kaydet</button>
+                </div>
+            </form>
+        </div><!-- /.box -->
+        <div>
+            @Html.ActionLink("Müşteri listesine geri dön", "Index")
+        </div>
+    </div>
+</div>
+

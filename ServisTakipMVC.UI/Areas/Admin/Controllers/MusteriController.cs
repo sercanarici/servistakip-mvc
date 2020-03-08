@@ -13,10 +13,22 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
         // GET: Admin/Musteri
         public ActionResult Index()
         {
+            string qs = Request.QueryString["table_search"];
+           
             using (MusteriRepository repo = new MusteriRepository())
             {
-                var model = repo.Listele(x => !x.Silindi);
-                return View(model);
+                List<Musteri> musteriList;
+
+                if (qs !=null && qs.Length>0)
+                {
+                    musteriList = repo.Listele(x => !x.Silindi && x.FirmaAdi.Contains(qs)).ToList();
+                }
+                else
+                {
+                    musteriList = repo.Listele(x => !x.Silindi).ToList();
+                }
+
+                return View(musteriList);
             }
         }
 
@@ -89,21 +101,21 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
         {
             try
             {
-                using (BayiRepository bayiRepo = new BayiRepository())
-                {
-                    var bayiler = bayiRepo.Listele(x => !x.Silindi);
-                    ViewBag.Bayiler = new SelectList(bayiler, "Id", "Adi"); ;
-                }
-
                 using (var repo = new MusteriRepository())
                 {
+                    model.GuncellemeTarihi = DateTime.Now;
                     repo.Guncelle(model);
                 }               
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
+                using (BayiRepository bayiRepo = new BayiRepository())
+                {
+                    var bayiler = bayiRepo.Listele(x => !x.Silindi);
+                    ViewBag.Bayiler = new SelectList(bayiler, "Id", "Adi"); ;
+                }
                 return View();
             }
         }
@@ -111,16 +123,26 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
         // GET: Admin/Musteri/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var repo = new MusteriRepository())
+            {
+                var model = repo.Getir(x=>x.Id==id);
+                return View(model);
+            }
         }
 
         // POST: Admin/Musteri/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id, FormCollection fc)
         {
             try
             {
-                // TODO: Add delete logic here
+                using (var repo = new MusteriRepository())
+                {
+                    var model = repo.Getir(x => x.Id == id);
+                    model.Silindi = true;
+                    repo.Guncelle(model);
+                }
 
                 return RedirectToAction("Index");
             }

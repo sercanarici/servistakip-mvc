@@ -1,0 +1,121 @@
+﻿@model ServisTakipMVC.MODEL.ServisForm
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ServisForm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KayitTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KayitTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GuncellemeTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GuncellemeTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Silindi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Silindi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BelgeNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BelgeNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaslangicTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaslangicTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BitisTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BitisTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YapilanIslemler)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YapilanIslemler)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notlar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notlar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MusteriAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MusteriAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServisUcreti)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServisUcreti)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ParaBirimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParaBirimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Odendi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Odendi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

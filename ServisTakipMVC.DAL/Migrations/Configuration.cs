@@ -11,6 +11,7 @@ namespace ServisTakipMVC.DAL.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(ServisTakipContext context)
@@ -54,7 +55,7 @@ namespace ServisTakipMVC.DAL.Migrations
 
             context.Musteri.AddOrUpdate(new Musteri
             {
-                Id=1,
+                Id = 1,
                 FirmaAdi = "Alisa Baby",
                 Adres = "Laleli",
                 BayiId = 1,
@@ -104,6 +105,22 @@ namespace ServisTakipMVC.DAL.Migrations
 
             context.HostingTip.AddOrUpdate(new HostingTip { Id = 1, Adi = "Linux", KayitTarihi = DateTime.Now, Silindi = false });
             context.HostingTip.AddOrUpdate(new HostingTip { Id = 2, Adi = "Windows", KayitTarihi = DateTime.Now, Silindi = false });
+
+            //context.Kullanici.AddOrUpdate(new Kullanici
+            //{
+            //    //Id = 1,
+            //    KullaniciAdi = "admin",
+            //    Ad = "Admin",
+            //    Soyad = "Adminoðlu",
+            //    Email = "admin@mail.com",
+            //    KayitTarihi = DateTime.Now,
+            //    Parola = "admin",
+            //    Silindi = false
+
+            //});
+
+            
+
 
             context.SaveChanges();
         }

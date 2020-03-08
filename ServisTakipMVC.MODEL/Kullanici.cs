@@ -30,6 +30,6 @@ namespace ServisTakipMVC.MODEL
         [DataType(DataType.Password)]
         public string Parola { get; set; }
 
-        public DateTime SonGirisZamani { get; set; }
+        public DateTime? SonGirisZamani { get; set; }
     }
 }
