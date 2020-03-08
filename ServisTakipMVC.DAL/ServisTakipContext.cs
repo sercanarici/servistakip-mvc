@@ -99,6 +99,10 @@ namespace ServisTakipMVC.DAL
             .HasIndex(b => b.FirmaAdi)
             .IsUnique();
 
+            //modelBuilder.Entity<ServisForm>()
+            //.HasOptional(b => b.BakimAnlasmasi)
+            //.WithOptionalPrincipal();
+
             modelBuilder.Entity<ServisIcerik>()
             .HasIndex(b => b.Adi)
             .IsUnique();

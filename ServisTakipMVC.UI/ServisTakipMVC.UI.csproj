@@ -186,6 +186,7 @@
     <Content Include="Areas\Admin\Static\plugins\jsgrid\jsgrid-theme.min.css" />
     <Content Include="Areas\Admin\Static\plugins\jsgrid\jsgrid.min.css" />
     <Content Include="Areas\Admin\Static\plugins\jsgrid\jsgrid.min.js" />
+    <Content Include="Areas\Admin\Static\plugins\moment\moment-with-locales.min.js" />
     <Content Include="Areas\Admin\Static\plugins\moment\moment.min.js" />
     <Content Include="Areas\Admin\Static\plugins\overlayScrollbars\css\OverlayScrollbars.min.css" />
     <Content Include="Areas\Admin\Static\plugins\overlayScrollbars\js\jquery.overlayScrollbars.min.js" />

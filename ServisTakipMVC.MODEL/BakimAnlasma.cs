@@ -11,6 +11,7 @@ namespace ServisTakipMVC.MODEL
 {
     public class BakimAnlasma:Base
     {
+        [Required]
         public int MusteriId { get; set; } 
 
         [Required]

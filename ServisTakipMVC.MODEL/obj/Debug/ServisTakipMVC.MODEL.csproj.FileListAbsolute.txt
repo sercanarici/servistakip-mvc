@@ -6,6 +6,5 @@ Z:\Rsa\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\obj\Debug\ServisTakipMV
 Z:\Rsa\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\obj\Debug\ServisTakipMVC.MODEL.pdb
 D:\OneDrive\Repositories\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\bin\Debug\ServisTakipMVC.MODEL.dll
 D:\OneDrive\Repositories\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\bin\Debug\ServisTakipMVC.MODEL.pdb
-D:\OneDrive\Repositories\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\obj\Debug\ServisTakipMVC.MODEL.csprojAssemblyReference.cache
 D:\OneDrive\Repositories\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\obj\Debug\ServisTakipMVC.MODEL.dll
 D:\OneDrive\Repositories\AspNetMVCKurs\ServisTakipMVC\ServisTakipMVC.MODEL\obj\Debug\ServisTakipMVC.MODEL.pdb

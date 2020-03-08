@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ServisTakipMVC.MODEL.ServisForm>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Servis Formları";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,54 +9,61 @@
 <a href="@Url.Action("Create", "ServisForm")" class="btn btn-primary">Yeni Servis Formu</a>
 
 <div class="row">
-    <div class="col-xs-12">
-        <div class="box">
+    <div class="col-12">
+        <div class="card">
             <form method="get">
-                <div class="box-header">
-                    <h3 class="box-title">Servis Listesi</h3>
-                    <div class="box-tools">
-                        <div class="input-group">
-                            <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search" />
-                            <div class="input-group-btn">
-                                <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                <div class="card-header">
+                    <h3 class="card-title">Servis Listesi</h3>
+                    <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </form>
             <!-- /.box-header -->
-            <div class="box-body table-responsive no-padding">
+            <div class="card-body table-responsive p-0">
                 <table class="table table-hover">
-                    <tr>
-                        <th>@Html.DisplayNameFor(model => model.Id)</th>
-                        <th>Müşteri</th>
-                        <th>Servis Tipi</th>
-                        <th>Servis İçeriği</th>
-                        <th>Başlangıç</th>
-                        <th>Bitiş</th>
-                        <th>Servis Sorumlusu</th>
-                        <th></th>
-
-                    </tr>
-                    @foreach (var item in Model)
-                    {
+                    <thead>
                         <tr>
-                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                            <td>@Html.DisplayFor(modelItem => item.Musterisi.FirmaAdi)</td>
-                            <td>@Html.DisplayFor(modelItem => item.ServisTipi.Adi)</td>
-                            <td>@Html.DisplayFor(modelItem => item.ServisIcerigi.Adi)</td>
-                            <td>@Html.DisplayFor(modelItem => item.BaslangicTarihi)</td>
-                            <td>@Html.DisplayFor(modelItem => item.BitisTarihi)</td>
-
-                            <td><span class="label label-success">@Html.DisplayFor(modelItem => item.ServisSorumlusu.KullaniciAdi)</span></td>
-                            <td class="pull-right">
-                                <a href="@Url.Action("Edit", "Musteri", new { id = item.Id })" class="btn btn-primary">Düzenle</a>
-                                <a href="@Url.Action("Details", "Musteri", new { id = item.Id })" class="btn btn-success">İncele</a>
-                                <a href="@Url.Action("Delete", "Musteri", new { id = item.Id })" class="btn btn-danger">Sil</a>
-                            </td>
-
+                            <th>@Html.DisplayNameFor(model => model.Id)</th>
+                            <th>Müşteri</th>
+                            <th>Servis Tipi</th>
+                            <th>Servis İçeriği</th>
+                            <th>Başlangıç</th>
+                            <th>Bitiş</th>
+                            <th>Servis Sorumlusu</th>
+                            <th></th>
                         </tr>
-                    }
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Musterisi.FirmaAdi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ServisTipi.Adi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.ServisIcerigi.Adi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BaslangicTarihi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BitisTarihi)</td>
+
+                                <td><span class="label label-success">@Html.DisplayFor(modelItem => item.ServisSorumlusu.KullaniciAdi)</span></td>
+                                <td class="pull-right">
+                                    <a href="@Url.Action("Edit", "ServisForm", new { id = item.Id })" class="btn btn-primary">Düzenle</a>
+                                    <a href="@Url.Action("Details", "ServisForm", new { id = item.Id })" class="btn btn-success">İncele</a>
+                                    <a href="@Url.Action("Delete", "ServisForm", new { id = item.Id })" class="btn btn-danger">Sil</a>
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+
+                    
 
                 </table>
             </div><!-- /.box-body -->

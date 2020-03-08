@@ -11,8 +11,8 @@ namespace ServisTakipMVC.UI.Controllers
         // GET: Home
         public ActionResult Index()
         {
-            //return RedirectToAction("Index", "Home", new { area = "Admin" });    
-            return View();
+            return RedirectToAction("Index", "Home", new { area = "Admin" });    
+            //return View();
         }
     }
 }

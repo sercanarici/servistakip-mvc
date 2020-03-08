@@ -116,14 +116,7 @@
 
                     <div class="form-group">
                         <label>Bayi</label>
-                        <select class="form-control" name="BayiId">
-                            <option value="0">--Seçiniz--</option>
-                            @foreach (var item in ViewBag.Bayiler)
-                            {
-                                <option value="@item.Value" selected="@(Convert.ToInt32(item.Value)==Model.BayiId ? "selected" : "")">@item.Text</option>
-                            }
-
-                        </select>
+                        @Html.DropDownListFor(model => model.BayiId, ViewBag.Bayiler as SelectList, "Seçiniz...", new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.BayiId, "", new { @class = "text-danger" })
                     </div>
                     @Html.HiddenFor(model => model.KayitTarihi)

@@ -73,8 +73,13 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
             }
             catch
             {
-                return RedirectToAction(nameof(Create));
-                //return View();
+                //return RedirectToAction(nameof(Create));
+                using (BayiRepository bayiRepo = new BayiRepository())
+                {
+                    var bayiler = bayiRepo.Listele(x => !x.Silindi);
+                    ViewBag.Bayiler = new SelectList(bayiler, "Id", "Adi"); ;
+                }
+                return View(model);
             }
         }
 
