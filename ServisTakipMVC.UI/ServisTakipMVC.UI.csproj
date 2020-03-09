@@ -224,11 +224,15 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\HostingController.cs" />
     <Compile Include="Areas\Admin\Controllers\HostingTipController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KullaniciController.cs" />
     <Compile Include="Areas\Admin\Controllers\MusteriController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServisFormController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServisIcerikController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServisSekliController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServisTipController.cs" />
+    <Compile Include="Areas\Admin\Filters\AuthFilter.cs" />
+    <Compile Include="Areas\Admin\Filters\LoginFilter.cs" />
+    <Compile Include="Areas\Admin\Models\LoginViewModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -278,6 +282,8 @@
     <Content Include="Areas\Admin\Views\BakimAnlasma\Create.cshtml" />
     <Content Include="Areas\Admin\Views\BakimAnlasma\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\BakimAnlasma\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Kullanici\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_UserPartialView.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -288,7 +294,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\BakimAnlasmaTip\" />
     <Folder Include="Areas\Admin\Views\Bayi\" />
     <Folder Include="Areas\Admin\Views\CihazForm\" />

@@ -1,5 +1,6 @@
 ﻿using ServisTakipMVC.BLL;
 using ServisTakipMVC.MODEL;
+using ServisTakipMVC.UI.Areas.Admin.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ServisTakipMVC.UI.Areas.Admin.Controllers
 {
+    [AuthFilter]
     public class BakimAnlasmaController : Controller
     {
         // GET: Admin/BakimAnlasma
@@ -24,7 +26,12 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
         // GET: Admin/BakimAnlasma/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            using (BakimAnlasmaRepository repo = new BakimAnlasmaRepository())
+            {
+                var model = repo.Getir(x=> x.Id==id);
+                return View(model);
+
+            }
         }
 
         // GET: Admin/BakimAnlasma/Create
@@ -53,7 +60,7 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
             {
                 using (BakimAnlasmaRepository repo = new BakimAnlasmaRepository())
                 {
-                    model.KayitTarihi = DateTime.Now;
+                    model.KayitTarihi = DateTime.Now;                    
                     repo.Ekle(model);
                 }
 

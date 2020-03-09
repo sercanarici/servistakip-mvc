@@ -153,7 +153,7 @@
                         <img src="~/Areas/Admin/Static/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Ruhi Sercan Arıcı</a>
+                        <a href="#" class="d-block">@{Html.RenderAction("getLoggedUserName", "Home");}</a>
                     </div>
                 </div>
 
@@ -161,7 +161,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
+    with font-awesome or any other icon font library -->
                         <li class="nav-header">İŞLEM MENÜSÜ</li>
                         <li class="nav-item">
                             <a href="@Url.Action("Index","Musteri")" class="nav-link">
@@ -170,7 +170,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="@Url.Action("Index","Anlasma")" class="nav-link">
+                            <a href="@Url.Action("Index","BakimAnlasma")" class="nav-link">
                                 <i class="nav-icon far fa-circle"></i>
                                 <p class="text">Bakım Anlaşmaları</p>
                             </a>
@@ -185,6 +185,13 @@
                             <a href="@Url.Action("Index","Hosting")" class="nav-link">
                                 <i class="nav-icon far fa-circle"></i>
                                 <p class="text">Hostingler</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="@Url.Action("Index","Kullanici")" class="nav-link">
+                                <i class="nav-icon far fa-user"></i>
+                                <p class="text">Kullanıcılar</p>
                             </a>
                         </li>
 

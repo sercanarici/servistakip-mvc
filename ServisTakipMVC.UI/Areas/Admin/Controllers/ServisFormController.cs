@@ -1,5 +1,6 @@
 ﻿using ServisTakipMVC.BLL;
 using ServisTakipMVC.MODEL;
+using ServisTakipMVC.UI.Areas.Admin.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ServisTakipMVC.UI.Areas.Admin.Controllers
 {
+    [AuthFilter]
     public class ServisFormController : Controller
     {
         // GET: Admin/ServisForm
@@ -78,7 +80,7 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
                 using (ServisFormRepository repo = new ServisFormRepository())
                 {
                     model.KayitTarihi = DateTime.Now;
-                    model.KullaniciId = 2;                    
+                    model.KullaniciId = ((Kullanici)Session["User"]).Id;
                     repo.Ekle(model);
                 }
 

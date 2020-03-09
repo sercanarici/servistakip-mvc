@@ -1,91 +1,97 @@
 ﻿@model ServisTakipMVC.MODEL.BakimAnlasma
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Anlaşma Detay";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
 
-<div>
-    <h4>BakimAnlasma</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.KayitTarihi)
-        </dt>
+<div class="row">
+    <div class="col-md-6">
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Anlaşma Bilgileri</h3>
+            </div><!-- /.box-header -->
+            <!-- form start -->
+            
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Müşteri Adı</label>
+                        @Html.EditorFor(model => model.Musterisi.FirmaAdi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.KayitTarihi)
-        </dd>
+                    <div class="form-group">
+                        <label>Anlaşma Tipi</label>
+                        @Html.EditorFor(model => model.AnlasmaTipi.Adi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.GuncellemeTarihi)
-        </dt>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.GuncellemeTarihi)
-        </dd>
+                    <div class="form-group">
+                        <label>Başlangıç Tarihi</label>
+                        <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                            <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                            @Html.EditorFor(model => model.BaslangicTarihi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Silindi)
-        </dt>
+                        </div>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Silindi)
-        </dd>
+                    <div class="form-group">
+                        <label>Bitiş Tarihi</label>
+                        <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                            </div>
+                            @Html.EditorFor(model => model.BitisTarihi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BaslangicTarihi)
-        </dt>
+                        </div>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.BaslangicTarihi)
-        </dd>
+                    <div class="form-group">
+                        <label>Not</label>
+                        @Html.TextAreaFor(model => model.Not, new { @class = "form-control", disabled = "disabled" })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BitisTarihi)
-        </dt>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.BitisTarihi)
-        </dd>
+                    <div class="form-group">
+                        <label>Anlaşılan Fiyat</label>
+                        <div class="input-group mb-3">
+                            @Html.EditorFor(model => model.AnlasilanFiyat, new { htmlAttributes = new { @class = "form-control", disabled="disabled" } })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Not)
-        </dt>
+                            <div class="input-group-append">
+                                <span class="input-group-text">.00</span>
+                            </div>
+                        </div>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Not)
-        </dd>
+                    <div class="form-group">
+                        <label>Para Birimi</label>
+                        <select class="form-control" name="ParaBirimi">
+                            <option value="">--Seçiniz--</option>
+                            <option value="TL">Türk Lirası</option>
+                            <option value="$">Amerikan Doları</option>
+                        </select>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AnlasilanFiyat)
-        </dt>
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(model => model.Odendi, new { htmlAttributes = new { @class = "form-control", disabled = "disabled" } }) Ödendi
 
-        <dd>
-            @Html.DisplayFor(model => model.AnlasilanFiyat)
-        </dd>
+                        </label>
+                    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ParaBirimi)
-        </dt>
+                </div><!-- /.box-body -->
 
-        <dd>
-            @Html.DisplayFor(model => model.ParaBirimi)
-        </dd>
+                <div class="card-footer">
+                    @Html.ActionLink("Düzenle", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" }) |
+                    @Html.ActionLink("Anlaşma listesine geri dön", "Index")
+                </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Odendi)
-        </dt>
+        </div><!-- /.box -->
 
-        <dd>
-            @Html.DisplayFor(model => model.Odendi)
-        </dd>
-
-    </dl>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+

@@ -15,9 +15,11 @@ namespace ServisTakipMVC.MODEL
         public int MusteriId { get; set; } 
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime BaslangicTarihi { get; set; }
 
         [Required]
+        [DataType(DataType.Date)]
         public DateTime BitisTarihi { get; set; }
 
         public int BakimAnlasmaTipId { get; set; }

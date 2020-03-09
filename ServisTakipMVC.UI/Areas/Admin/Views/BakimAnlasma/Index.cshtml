@@ -49,7 +49,7 @@
                                 <td>@Html.DisplayFor(modelItem => item.AnlasmaTipi.Adi)</td>
                                 <td>@Html.DisplayFor(modelItem => item.BaslangicTarihi)</td>
                                 <td>@Html.DisplayFor(modelItem => item.BitisTarihi)</td>
-                                <td><span class="badge bg-success">@Html.DisplayFor(modelItem => item.Odendi)</span></td>
+                                <td>@Html.DisplayFor(modelItem => item.Odendi)</td>
 
                                 <td class="float-right">
                                     <a href="@Url.Action("Edit", "BakimAnlasma", new { id = item.Id })" class="btn btn-primary">Düzenle</a>

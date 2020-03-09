@@ -1,5 +1,6 @@
 ﻿using ServisTakipMVC.BLL;
 using ServisTakipMVC.MODEL;
+using ServisTakipMVC.UI.Areas.Admin.Filters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace ServisTakipMVC.UI.Areas.Admin.Controllers
 {
+    [AuthFilter]
     public class MusteriController : Controller
     {
         // GET: Admin/Musteri
@@ -64,7 +66,7 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
 
                 using (MusteriRepository repo = new MusteriRepository())
                 {
-                    model.KayitTarihi = DateTime.Now;
+                    model.KayitTarihi = DateTime.Now;                   
                     repo.Ekle(model);
                 }
 
