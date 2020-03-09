@@ -273,6 +273,11 @@
     <Content Include="Areas\Admin\Static\dist\js\adminlte.min.js.map" />
     <Content Include="Areas\Admin\Static\plugins\bootstrap\js\bootstrap.bundle.min.js.map" />
     <Content Include="Areas\Admin\Static\dist\css\adminlte.min.css.map" />
+    <Content Include="Areas\Admin\Views\BakimAnlasma\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\BakimAnlasma\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\BakimAnlasma\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\BakimAnlasma\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\BakimAnlasma\Delete.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -285,7 +290,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\BakimAnlasmaTip\" />
-    <Folder Include="Areas\Admin\Views\BakimAnlasma\" />
     <Folder Include="Areas\Admin\Views\Bayi\" />
     <Folder Include="Areas\Admin\Views\CihazForm\" />
     <Folder Include="Areas\Admin\Views\CihazMarka\" />

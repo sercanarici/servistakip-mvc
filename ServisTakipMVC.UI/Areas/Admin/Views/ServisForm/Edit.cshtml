@@ -13,26 +13,27 @@
                 <h3 class="card-title">Servis Bilgileri</h3>
             </div><!-- /.box-header -->
             <!-- form start -->
-            <form role="form" method="post">
+            @using (Html.BeginForm())
+            {
                 @Html.AntiForgeryToken()
                 <div class="card-body">
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                     <div class="form-group">
                         <label>Müşteri</label>
-                        @Html.DropDownListFor(model => model.MusteriId, ViewBag.Musteriler as SelectList, "Seçiniz...", new { @class = "form-control" })                        
+                        @Html.DropDownListFor(model => model.MusteriId, ViewBag.Musteriler as SelectList, "Seçiniz...", new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.MusteriId, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
-                        <label for="belgeno">Belge No</label>                        
+                        <label for="belgeno">Belge No</label>
                         @Html.EditorFor(model => model.BelgeNo, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.BelgeNo, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
                         <label>Servis Tipi</label>
-                        @Html.DropDownListFor(model => model.ServisTipId, ViewBag.ServisTipleri as SelectList, "Seçiniz...", new { @class = "form-control" })                       
+                        @Html.DropDownListFor(model => model.ServisTipId, ViewBag.ServisTipleri as SelectList, "Seçiniz...", new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.ServisTipId, "", new { @class = "text-danger" })
                     </div>
 
@@ -45,7 +46,7 @@
                     <div class="form-group">
                         <label>Servis Şekli</label>
                         @Html.DropDownListFor(model => model.ServisSekliId, ViewBag.ServisSekilleri as SelectList, "Seçiniz...", new { @class = "form-control" })
-                      
+
                         @Html.ValidationMessageFor(model => model.ServisSekliId, "", new { @class = "text-danger" })
                     </div>
 
@@ -55,7 +56,7 @@
                             <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                                 <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
                             </div>
-                            
+
                             @Html.EditorFor(model => model.BaslangicTarihi, new { htmlAttributes = new { @class = "form-control datetimepicker-input" } })
 
                         </div>
@@ -77,8 +78,8 @@
 
 
                     <div class="form-group">
-                        <label>Yapılan İşlemler</label>                        
-                        @Html.TextAreaFor(model => model.YapilanIslemler,  new { @class = "form-control" } )
+                        <label>Yapılan İşlemler</label>
+                        @Html.TextAreaFor(model => model.YapilanIslemler, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.YapilanIslemler, "", new { @class = "text-danger" })
                     </div>
 
@@ -90,20 +91,20 @@
 
                     <div class="form-group">
                         <label>Müşteri Ad-Soyad</label>
-                        @Html.EditorFor(model => model.BelgeNo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.EditorFor(model => model.MusteriAdi, new { htmlAttributes = new { @class = "form-control" } })
                         @Html.ValidationMessageFor(model => model.MusteriAdi, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
                         <label>Bakım Anlaşması</label>
                         @Html.DropDownListFor(model => model.BakimAnlasmaId, ViewBag.BakimAnlasmalari as SelectList, "Seçiniz...", new { @class = "form-control" })
-                      
+
                         @Html.ValidationMessageFor(model => model.BakimAnlasmaId, "", new { @class = "text-danger" })
                     </div>
 
                     <div class="form-group">
                         <label>Servis Ücreti</label>
-                        <div class="input-group mb-3">                            
+                        <div class="input-group mb-3">
                             @Html.EditorFor(model => model.ServisUcreti, new { htmlAttributes = new { @class = "form-control" } })
 
                             <div class="input-group-append">
@@ -127,16 +128,18 @@
                     <div class="checkbox">
                         <label>
                             @Html.CheckBoxFor(model => model.Odendi, new { htmlAttributes = new { @class = "form-control" } })
-                             Ödendi
+                            Ödendi
                         </label>
                     </div>
 
                 </div><!-- /.box-body -->
+                @Html.HiddenFor(model => model.KayitTarihi)
+                @Html.HiddenFor(model => model.KullaniciId)
 
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Kaydet</button>
                 </div>
-            </form>
+            }
         </div><!-- /.box -->
         <div>
             @Html.ActionLink("Müşteri listesine geri dön", "Index")

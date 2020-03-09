@@ -23,7 +23,11 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
         // GET: Admin/ServisForm/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            using (var repo = new ServisFormRepository())
+            {
+                var model = repo.Getir(x => x.Id == id);
+                return View(model);
+            }
         }
 
         // GET: Admin/ServisForm/Create
@@ -159,33 +163,78 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
 
         // POST: Admin/ServisForm/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, ServisForm model)
         {
             try
             {
-                // TODO: Add update logic here
+                using (var repo = new ServisFormRepository())
+                {
+                    model.GuncellemeTarihi = DateTime.Now;
+                    repo.Guncelle(model);
+                }
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                using (MusteriRepository repo = new MusteriRepository())
+                {
+                    var liste = repo.Listele(x => !x.Silindi);
+                    ViewBag.Musteriler = new SelectList(liste, "Id", "FirmaAdi"); ;
+                }
+
+                using (ServisTipRepository repo = new ServisTipRepository())
+                {
+                    var liste = repo.Listele(x => !x.Silindi);
+                    ViewBag.ServisTipleri = new SelectList(liste, "Id", "Adi"); ;
+                }
+
+                using (ServisIcerikRepository repo = new ServisIcerikRepository())
+                {
+                    var liste = repo.Listele(x => !x.Silindi);
+                    ViewBag.ServisIcerikleri = new SelectList(liste, "Id", "Adi"); ;
+                }
+
+                using (ServisSekliRepository repo = new ServisSekliRepository())
+                {
+                    var liste = repo.Listele(x => !x.Silindi);
+                    ViewBag.ServisSekilleri = new SelectList(liste, "Id", "Adi"); ;
+                }
+
+                using (BakimAnlasmaRepository repo = new BakimAnlasmaRepository())
+                {
+                    var liste = repo.Listele(x => !x.Silindi);
+                    ViewBag.BakimAnlasmalari = new SelectList(liste, "Id", "Musterisi.FirmaAdi"); ;
+                }
+                return View(model);
             }
         }
 
         // GET: Admin/ServisForm/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var repo = new ServisFormRepository())
+            {
+                var model = repo.Getir(x => x.Id == id);
+                return View(model);
+            }
+
         }
 
         // POST: Admin/ServisForm/Delete/5
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try
             {
-                // TODO: Add delete logic here
+                using (var repo = new ServisFormRepository())
+                {
+                    var model = repo.Getir(x => x.Id == id);
+                    model.Silindi = true;
+                    repo.Guncelle(model);
+                }
 
                 return RedirectToAction("Index");
             }

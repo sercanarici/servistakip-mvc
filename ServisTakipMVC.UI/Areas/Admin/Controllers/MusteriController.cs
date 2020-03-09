@@ -121,7 +121,7 @@ namespace ServisTakipMVC.UI.Areas.Admin.Controllers
                     var bayiler = bayiRepo.Listele(x => !x.Silindi);
                     ViewBag.Bayiler = new SelectList(bayiler, "Id", "Adi"); ;
                 }
-                return View();
+                return View(model);
             }
         }
 
