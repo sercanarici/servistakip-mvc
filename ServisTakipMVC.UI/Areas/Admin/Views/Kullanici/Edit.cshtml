@@ -1,0 +1,72 @@
+﻿@model ServisTakipMVC.MODEL.Kullanici
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="row">
+        <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="card card-primary">
+                <div class="card-header">
+                    <h3 class="card-title">Müşteri Bilgileri</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="form-group">
+                    <label>Kullanıcı Adı</label>
+                    @Html.EditorFor(model => model.KullaniciAdi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.KullaniciAdi, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label>Ad</label>
+                    @Html.EditorFor(model => model.Ad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Soyad, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label>Soyad</label>
+                    @Html.EditorFor(model => model.Soyad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Soyad, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-at"></i></span>
+                        </div>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group">
+                    <label>Parola</label>
+                    @Html.EditorFor(model => model.Parola, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Parola, "", new { @class = "text-danger" })
+                </div>
+
+
+            </div><!-- /.box-body -->
+                    @Html.HiddenFor(model => model.KayitTarihi)
+                    @Html.HiddenFor(model => model.Silindi)
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                }
+            </div><!-- /.box -->
+            <div>
+                @Html.ActionLink("Kullanıcı listesine geri dön", "Index")
+            </div>
+        </div>
+    </div>

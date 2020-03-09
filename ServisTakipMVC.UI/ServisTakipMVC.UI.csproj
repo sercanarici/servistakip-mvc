@@ -284,6 +284,10 @@
     <Content Include="Areas\Admin\Views\BakimAnlasma\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Kullanici\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_UserPartialView.cshtml" />
+    <Content Include="Areas\Admin\Views\Kullanici\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Kullanici\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Kullanici\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Kullanici\Delete.cshtml" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

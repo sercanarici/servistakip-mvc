@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ServisTakipMVC.MODEL.Kullanici>
+
+@{
+    ViewBag.Title = "Kullanicilar";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="row">
+        <div class="col-12">
+            <a href="@Url.Action("Create", "Kullanici")" class="btn btn-primary">Yeni Kullanıcı</a>
+            <hr />
+            <div class="card">
+                <form method="get">
+                    <div class="card-header">
+                        <h3 class="card-title">Kullanıcı Listesi</h3>
+
+                        <div class="card-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- /.box-header -->
+                <div class="card-body table-responsive p-0">
+                    <table class="table table-hover text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.Id)</th>
+                                <th>@Html.DisplayNameFor(model => model.KullaniciAdi)</th>
+                                <th>@Html.DisplayNameFor(model => model.Ad)</th>
+                                <th>@Html.DisplayNameFor(model => model.Soyad)</th>
+                                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                                <th>@Html.DisplayNameFor(model => model.Silindi)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                <td>@Html.DisplayFor(modelItem => item.KullaniciAdi)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Ad)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Soyad)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                                <td>@Html.DisplayFor(modelItem => item.Silindi)</td>
+
+
+                                <td class="float-right">
+                                    <a href="@Url.Action("Edit", "Kullanici", new { id = item.Id })" class="btn btn-primary">Düzenle</a>
+                                    <a href="@Url.Action("Delete", "Kullanici", new { id = item.Id })" class="btn btn-danger">Sil</a>
+                                </td>
+
+                            </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div>
+    </div>
